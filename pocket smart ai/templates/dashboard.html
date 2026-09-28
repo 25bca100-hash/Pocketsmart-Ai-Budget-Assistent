@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - PocketSmart AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<main class="container dashboard">
+    <header class="dashboard-header">
+        <div>
+            <p class="eyebrow">POCKETSMART AI · PERSONAL FINANCE</p>
+            <h1>Welcome, {{ username }}</h1>
+            <p class="dashboard-intro">A clearer view of the plans you have created.</p>
+        </div>
+        <a class="logout-link" href="{{ url_for('logout') }}">Log out</a>
+    </header>
+
+    <section class="summary-grid" aria-label="Budget summary">
+        <article class="stat-card stat-card-primary">
+            <span class="stat-label">Total Budget</span>
+            <strong>₹{{ "{:,.0f}".format(total_budget) }}</strong>
+            <span class="stat-note">Across saved plans</span>
+        </article>
+        <article class="stat-card">
+            <span class="stat-label">Planned / Spent</span>
+            <strong class="stat-unavailable">Not tracked</strong>
+            <span class="stat-note">Purchase data is not stored</span>
+        </article>
+        <article class="stat-card">
+            <span class="stat-label">Remaining Amount</span>
+            <strong class="stat-unavailable">Not available</strong>
+            <span class="stat-note">Requires expense tracking</span>
+        </article>
+    </section>
+
+    <section class="dashboard-main-grid">
+        <section class="chart-panel" aria-labelledby="budget-chart-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR ACTIVITY</p>
+                    <h2 id="budget-chart-title">Budget by planner</h2>
+                </div>
+                <span class="chart-period">Saved plans</span>
+            </div>
+
+            {% if budget_breakdown %}
+                <div class="budget-chart">
+                    {% for item in budget_breakdown %}
+                        <div class="chart-row">
+                            <div class="chart-row-label">
+                                <span>{{ item.category }}</span>
+                                <strong>₹{{ "{:,.0f}".format(item.total_budget) }}</strong>
+                            </div>
+                            <progress class="chart-track" max="100" value="{{ item.bar_width }}" aria-label="{{ item.category }} budget share"></progress>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="chart-empty">
+                    <span class="empty-mark" aria-hidden="true">＋</span>
+                    <p>Your planner budgets will appear here after you create a plan.</p>
+                </div>
+            {% endif %}
+        </section>
+
+        <aside class="ai-prompt-panel">
+            <div class="ai-orbit" aria-hidden="true">✦</div>
+            <p class="eyebrow">POCKETSMART INTELLIGENCE</p>
+            <h2>Make your next move count.</h2>
+            <p>Turn a budget into a practical, personalized plan with AI.</p>
+            <a class="primary-action" href="{{ url_for('recommendation') }}">
+                Get an AI recommendation <span aria-hidden="true">→</span>
+            </a>
+        </aside>
+    </section>
+
+    <section class="planner-section" aria-labelledby="planner-heading">
+        <div class="section-heading planner-heading">
+            <div>
+                <p class="eyebrow">PLAN WITH PURPOSE</p>
+                <h2 id="planner-heading">Choose a planner</h2>
+            </div>
+        </div>
+
+        <div class="planner-grid">
+            <article class="card">
+                <span class="planner-icon" aria-hidden="true">⌂</span>
+                <h3>Home Planning</h3>
+                <p>Plan home expenses around your budget.</p>
+                <a class="card-link" href="{{ url_for('home_planner') }}">Open Home Planner <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="card">
+                <span class="planner-icon" aria-hidden="true">✳</span>
+                <h3>Party Planning</h3>
+                <p>Organize a celebration with a clear budget.</p>
+                <a class="card-link" href="{{ url_for('party_planner') }}">Open Party Planner <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="card">
+                <span class="planner-icon" aria-hidden="true">◇</span>
+                <h3>Jewelry Planning</h3>
+                <p>Explore jewelry options within your budget.</p>
+                <a class="card-link" href="{{ url_for('jewelry_planner') }}">Open Jewelry Planner <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="card">
+                <span class="planner-icon" aria-hidden="true">▤</span>
+                <h3>Recommendation History</h3>
+                <p>Return to your saved budget recommendations.</p>
+                <a class="card-link" href="{{ url_for('history') }}">View History <span aria-hidden="true">→</span></a>
+            </article>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

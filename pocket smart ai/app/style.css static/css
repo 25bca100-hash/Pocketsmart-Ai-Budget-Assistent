@@ -1,0 +1,181 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 30px 20px;
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #667eea,
+        #764ba2,
+        #f093fb,
+        #4facfe
+    );
+
+    color: #1f2937;
+}
+
+/* Main Card */
+.container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 35px;
+
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.20);
+}
+
+/* Headings */
+h1 {
+    text-align: center;
+    color: #6d28d9;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    text-align: center;
+    color: #ec4899;
+    margin-top: 20px;
+}
+
+/* Inputs */
+input,
+select {
+    width: 100%;
+    padding: 14px;
+    margin: 8px 0 15px;
+
+    border: 2px solid #e0e7ff;
+    border-radius: 12px;
+
+    font-size: 15px;
+    outline: none;
+
+    background: #f8faff;
+}
+
+input:focus,
+select:focus {
+    border-color: #8b5cf6;
+
+    box-shadow:
+        0 0 0 4px rgba(139, 92, 246, 0.15);
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 14px;
+    margin: 8px 0;
+
+    border: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+
+    background: linear-gradient(
+        90deg,
+        #7c3aed,
+        #ec4899
+    );
+
+    box-shadow:
+        0 5px 15px rgba(124, 58, 237, 0.25);
+
+    transition: 0.25s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    background: linear-gradient(
+        90deg,
+        #ec4899,
+        #f97316
+    );
+
+    box-shadow:
+        0 8px 20px rgba(236, 72, 153, 0.35);
+}
+
+/* Links */
+a {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+
+    color: #7c3aed;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #ec4899;
+}
+
+/* Error */
+.error {
+    color: #b91c1c;
+
+    background: #fee2e2;
+
+    border-left: 5px solid #ef4444;
+
+    padding: 14px;
+    margin-top: 15px;
+
+    border-radius: 10px;
+}
+
+/* Result */
+.result {
+    margin-top: 20px;
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background: linear-gradient(
+        135deg,
+        #eef2ff,
+        #fce7f3
+    );
+
+    border-left: 6px solid #8b5cf6;
+
+    line-height: 1.7;
+}
+
+/* Dashboard Cards */
+.card {
+    padding: 20px;
+    margin: 15px 0;
+
+    border-radius: 16px;
+
+    background: linear-gradient(
+        135deg,
+        #fdf2f8,
+        #eef2ff
+    );
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #e9d5ff;
+    margin: 25px 0;
+}

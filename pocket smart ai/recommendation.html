@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recommendation - PocketSmart AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>💰 Smart Budget Recommendation</h1>
+
+    {% if category is defined and budget is defined %}
+        <div class="result">
+
+            <h2>✨ AI Recommendation</h2>
+
+            <p style="white-space: pre-line;">{{ recommendation }}</p>
+
+        </div>
+    {% else %}
+        <p style="text-align: center;">
+            ✨ Enter your budget and get a smart recommendation
+        </p>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+
+            <label for="category">📂 Choose Category</label>
+
+            <select name="category" id="category" required>
+                <option value="">✨ Select Category</option>
+                <option value="home">🏠 Home</option>
+                <option value="party">🎉 Party</option>
+                <option value="jewelry">💎 Jewelry</option>
+                <option value="general">💰 General</option>
+            </select>
+
+            <label for="budget">💵 Your Budget</label>
+
+            <input
+                type="number"
+                id="budget"
+                name="budget"
+                placeholder="Enter your budget"
+                min="1"
+                required
+            >
+
+            <button type="submit">
+                🤖 Get Smart Recommendation
+            </button>
+
+        </form>
+    {% endif %}
+
+    <a href="{{ url_for('dashboard') }}">
+        🏠 Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>
