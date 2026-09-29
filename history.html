@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History - PocketSmart AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Recommendation History</h1>
+
+    {% if records %}
+
+        {% for record in records %}
+
+            <div class="result">
+                <h3>{{ record["category"] }}</h3>
+                <p>Budget: ₹{{ record["budget"] }}</p>
+                <p>{{ record["recommendation"] }}</p>
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No recommendations yet.</p>
+
+    {% endif %}
+
+    <a href="{{ url_for('dashboard') }}">
+        Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>
